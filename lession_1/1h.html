@@ -13,11 +13,11 @@
 
     <script src="https://unpkg.com/supersimpledev/babel.js"></script>
     <script type="text/babel">
-      const current_time = dayjs().format('HH:mm:ss');
-      console.log(current_time)
+      const today_date =dayjs().format('MMM D');
+      console.log(today_date)
       const display = (
         <div>
-          <p>Curent time: {current_time}</p>  
+          <p>Today is {today_date}</p>  
         </div>
       )
 

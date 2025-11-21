@@ -13,16 +13,11 @@
 
     <script src="https://unpkg.com/supersimpledev/babel.js"></script>
     <script type="text/babel">
-      const current_time = dayjs().format('HH:mm:ss');
-      console.log(current_time)
-      const display = (
-        <div>
-          <p>Curent time: {current_time}</p>  
-        </div>
-      )
+        console.log(dayjs().format('MMM D'));
+        
 
       const container = document.querySelector('.js-container');
-      ReactDOM.createRoot(container).render(display);
+      ReactDOM.createRoot(container).render();
     </script>
   </body>
 </html>
