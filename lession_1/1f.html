@@ -13,14 +13,13 @@
     <script type="text/babel">
         const shippingCost = 5
         const productCost = 10 + 2 * 8;
-        const total_cost = shippingCost + productCost
 
         const totalcost =(
           <div>
             
             <p>Product Cost: ${productCost}</p>
             <p>Shipping Cost:${shippingCost}</p>
-            <p>Total Cost:${total_cost}</p>
+            <p>Total Cost:${ productCost+shippingCost}</p>
             <button> Place your order</button>
           </div>
         ) 
