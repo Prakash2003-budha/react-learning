@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>React Basics</title>
+    <title>Chatbot</title>
   </head>
   <body>
     <div class="js-container"></div>
@@ -13,16 +13,18 @@
 
     <script src="https://unpkg.com/supersimpledev/babel.js"></script>
     <script type="text/babel">
-      const current_time = dayjs().format('HH:mm:ss');
-      console.log(current_time)
-      const display = (
-        <div>
-          <p>Curent time: {current_time}</p>  
-        </div>
-      )
 
-      const container = document.querySelector('.js-container');
-      ReactDOM.createRoot(container).render(display);
+        
+        function App(){
+            function increaseCount(){
+                console.log('clicked')
+            }
+            return(               
+                <button onClick= {increaseCount}>Clicked 0 times</button>
+        );
+      }
+      const container = document.querySelector(".js-container");
+      ReactDOM.createRoot(container).render(<App/>);
     </script>
   </body>
 </html>
