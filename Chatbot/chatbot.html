@@ -18,12 +18,17 @@
 
       function ChatInput({chatMessages, setChatMessage}) {
         const [inputText, setInputText] = React.useState('');
+        const [isLoading, setIsLoading]= React.useState(false);
 
         function saveInputText(event){
           setInputText(event.target.value)
         }
 
-        function sendMessage(){
+        async function sendMessage(){
+          if (isLoading || inputText ===''){
+            return;
+          }
+          setInputText('')
 
           const newChatMessages = [
             ...chatMessages,
@@ -34,9 +39,15 @@
             }
           ]
 
-          setChatMessage(newChatMessages);
+          setChatMessage([...newChatMessages,
+            {
+              message : 'Loaging...',
+              sender: ' robot',
+              id: crypto.randomUUID9
+            }
+          ]);
 
-          const response = Chatbot.getResponse(inputText);
+          const response = await Chatbot.getResponse(inputText);
           setChatMessage([
             ...newChatMessages,
             {
@@ -47,7 +58,14 @@
           ]);
           
 
-          setInputText('');
+          setInputText('false');
+        }
+        function handleKeyDown(event){
+          if (event.key === 'Enter'){
+            sendMessage();
+          } else if (event.key === 'Escape'){
+            setChatMessage('')
+          }
         }
 
         return (
@@ -56,6 +74,7 @@
               placeholder="Send a message to ChatBot" 
               size="30"
               onChange = {saveInputText}
+              onKeyDown={handleKeyDown}
               value = {inputText}
             />
             <button 
@@ -113,23 +132,7 @@
       function App(){
 
         const [chatMessages, setChatMessage] = React.useState(
-            [{
-            message: 'hello chhatbot',
-            sender:'user',
-            id:'id1'
-          },{
-            message: 'Hello! How can i help you',
-            sender:'robot',
-            id:'id2'
-          },{
-            message:'Can you get me today date?',
-            sender:'user',
-            id:'id3'
-          },{
-            message:'Today is 18 December',
-            sender:'robot',
-            id:'id4'
-          }]
+            []
         );
         // const [chatMessages, setChatMessage]= array
         // const chatMessages = array[0];
