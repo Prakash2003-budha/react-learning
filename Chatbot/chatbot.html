@@ -69,6 +69,11 @@
         overflow: scroll;
         scrollbar-width: none;
       }
+      .welcome-message{
+        color: rgb(120,120,120);
+        text-align: center;
+      }
+      
     </style>
   </head>
   <body>
@@ -155,19 +160,6 @@
       }
 
       function ChatMessage({message, sender}){
-        //const messaage = props.message
-        //const sender = props.sender
-        // const { message , sender } = props;
-
-        // if (sender  === "robot"){
-        //   return (
-        //     <div>
-             
-        //      {message}
-        //   </div>
-        //   );
-        // }
-
         return(
           <div className={
             sender === 'user'?
@@ -219,13 +211,11 @@
         const [chatMessages, setChatMessage] = React.useState(
             []
         );
-        // const [chatMessages, setChatMessage]= array
-        // const chatMessages = array[0];
-        // const setChatMessage = array[1];
-
         return(
           <div className="app-container">
-            
+            {chatMessages.length === 0 &&(
+              <p className = "welcome-message">Welcome to the chatbot project! Send a message using the testbox below</p>
+            )}            
             <ChatMessages 
               chatMessages = {chatMessages}
               
@@ -238,9 +228,6 @@
           </div>
         );
       }
-
-      
-
       const container = document.querySelector('.js-container');
       ReactDOM.createRoot(container).render(<App/>);
     </script>
