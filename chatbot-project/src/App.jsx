@@ -1,6 +1,6 @@
 import { useState,} from 'react'
-import { ChatMessages } from './components/chatMessages.jsx';
-import {ChatInput} from './components/chatInput.JSX'
+import { ChatMessages } from './components/ChatMesssages/chatMessages.jsx';
+import {ChatInput} from './components/Chatinput/chatInput.jsx'
 import './App.css'
     
 function App(){
